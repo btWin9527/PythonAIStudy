@@ -56,11 +56,12 @@ from fastapi.responses import JSONResponse, StreamingResponse
 import uvicorn
 
 # 记忆相关导入
+from pathlib import Path
 from langchain_core.runnables import ConfigurableFieldSpec
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import SQLChatMessageHistory
-from langchain.schema import ChatMessage
+from langchain_core.messages import HumanMessage
 
 
 # ==============================================================================
@@ -106,7 +107,7 @@ def get_session_history(user_id: str, conversation_id: str):
     history.clear()
 
     for content in recent_messages_content:
-        message = ChatMessage(content=content, role="user")
+        message = HumanMessage(content=content)
         history.add_message(message)
 
     logger.info(f"历史对话记忆内容: {history}\n")
@@ -131,8 +132,8 @@ async def lifespan(app: FastAPI):
 
         # ── 5.2 加载 Prompt 模板（含历史占位符） ──
         from langchain_core.prompts import PromptTemplate
-        prompt_template_system = PromptTemplate.from_file(config.PROMPT_TEMPLATE_TXT_SYS)
-        prompt_template_user = PromptTemplate.from_file(config.PROMPT_TEMPLATE_TXT_USER)
+        prompt_template_system = PromptTemplate.from_template(Path(config.PROMPT_TEMPLATE_TXT_SYS).read_text(encoding="utf-8"))
+        prompt_template_user = PromptTemplate.from_template(Path(config.PROMPT_TEMPLATE_TXT_USER).read_text(encoding="utf-8"))
         prompt = ChatPromptTemplate.from_messages(
             [
                 ("system", prompt_template_system.template),

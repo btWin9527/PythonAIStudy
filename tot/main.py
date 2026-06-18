@@ -47,6 +47,7 @@ from typing import List, Optional
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import config
+from pathlib import Path
 from pydantic import BaseModel
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from fastapi import FastAPI, HTTPException
@@ -123,10 +124,10 @@ async def lifespan(app: FastAPI):
         config.model = model
 
         # ── 加载 4 个 Prompt 模板 ──
-        prompt_template_performanceAnalyser = PromptTemplate.from_file(PROMPT_PERFORMANCE_ANALYSER)
-        prompt_template_possibleSports = PromptTemplate.from_file(PROMPT_POSSIBLE_SPORTS)
-        prompt_template_evaluate = PromptTemplate.from_file(PROMPT_EVALUATE)
-        prompt_template_report = PromptTemplate.from_file(PROMPT_REPORT)
+        prompt_template_performanceAnalyser = PromptTemplate.from_template(Path(PROMPT_PERFORMANCE_ANALYSER).read_text(encoding="utf-8"))
+        prompt_template_possibleSports = PromptTemplate.from_template(Path(PROMPT_POSSIBLE_SPORTS).read_text(encoding="utf-8"))
+        prompt_template_evaluate = PromptTemplate.from_template(Path(PROMPT_EVALUATE).read_text(encoding="utf-8"))
+        prompt_template_report = PromptTemplate.from_template(Path(PROMPT_REPORT).read_text(encoding="utf-8"))
 
         # 构建 ChatPromptTemplate
         prompt_performanceAnalyser = ChatPromptTemplate.from_messages([

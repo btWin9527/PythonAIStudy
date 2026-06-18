@@ -36,8 +36,8 @@ import re
 import uuid
 import time
 import logging
-from pydantic import BaseModel, Field
-from langchain_core.pydantic_v1 import SecretStr
+from pathlib import Path
+from pydantic import BaseModel, Field, SecretStr
 from typing import List, Optional
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
@@ -256,8 +256,8 @@ def build_prompt(
     sys_path = sys_path or PROMPT_TEMPLATE_TXT_SYS
     user_path = user_path or PROMPT_TEMPLATE_TXT_USER
 
-    prompt_template_system = PromptTemplate.from_file(sys_path)
-    prompt_template_user = PromptTemplate.from_file(user_path)
+    prompt_template_system = PromptTemplate.from_template(Path(sys_path).read_text(encoding="utf-8"))
+    prompt_template_user = PromptTemplate.from_template(Path(user_path).read_text(encoding="utf-8"))
 
     return ChatPromptTemplate.from_messages(
         [
