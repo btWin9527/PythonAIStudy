@@ -1,0 +1,19 @@
+# AutoGen 软件开发团队案例依赖 (v0.7.4)
+# AutoGen 核心对话模块，用于构建多智能体协作系统，支持角色定义、消息传递与任务编排
+autogen-agentchat
+# AutoGen 扩展包，集成 OpenAI 与 Azure 模型服务，提供模型调用、工具注册与环境适配能力
+autogen-ext[openai,azure]
+# OpenAI 官方 Python SDK，用于调用 GPT 系列模型 API，是 AutoGen 智能体的“大脑”驱动源
+openai>=1.0.0
+# 快速构建 Web 交互界面的框架，用于可视化展示 AutoGen 多智能体协作过程与结果
+streamlit>=1.28.0
+# HTTP 请求库，用于智能体调用外部 API、获取网络数据或与第三方服务通信
+requests>=2.31.0
+# 数据处理与分析库，支持智能体读取、清洗、分析结构化数据（如 CSV、Excel），常用于数据分析类任务
+pandas>=2.0.0
+# 交互式图表库，用于将 pandas 分析结果可视化，便于智能体输出报告或用户直观理解数据
+plotly>=5.15.0
+# Python 异步编程标准库，支撑 AutoGen 多智能体并发执行、非阻塞通信与高效任务调度
+asyncio
+# 环境变量管理工具，用于安全加载 API Key、数据库密码等敏感配置，避免硬编码泄露
+dotenv
