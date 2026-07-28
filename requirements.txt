@@ -6,3 +6,6 @@ fastapi==0.137.2
 uvicorn==0.49.0
 tavily-python==0.7.26
 ddgs>=5.0
+gradio>=6.0
+faiss-cpu>=1.8
+dashscope>=1.20
