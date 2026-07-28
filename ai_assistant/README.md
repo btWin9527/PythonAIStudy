@@ -301,7 +301,7 @@ USE_LANGCHAIN = False  # HelloAgents 版
 
 ---
 
-## Vue 3 前端（`ui/vue_client/`）
+## Vue 3 前端（`ui/vue_client`）
 
 ### 技术栈
 
