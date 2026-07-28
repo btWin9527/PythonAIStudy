@@ -47,9 +47,19 @@ cd ai_assistant
 ```
 ai_assistant/
 ├── run.py                          # 统一启动入口
+├── run.sh                          # 一键启动脚本
 ├── .env                            # API 密钥 / 模型配置
-├── A_Assistant_langchain.py        # ★ LangChain 版核心（主要学习目标）
+├── config.py                       # 统一配置（LLM / Embedding / 文档处理）
+├── constants.py                    # 枚举常量（MemoryType / EventType / Role）
+├── chains.py                       # RAG 管线：检索 + 消息构建 + Prompt
+├── reports.py                      # 数据报表：stats / report 装配
+├── A_Assistant_langchain.py        # ★ LangChain 版核心（流程编排）
 ├── A_Assistant.py                  # HelloAgents 版（对照参考）
+├── tools/                          # 工具模块
+│   ├── __init__.py
+│   ├── embeddings.py               # DashScopeEmbeddings 适配器
+│   ├── memory.py                   # SimpleMemory 记忆系统
+│   └── utils.py                    # 纯函数工具（上下文构建、token 估算）
 ├── pdf/
 │   ├── test.pdf                    # 默认文档 (46KB)
 │   └── Happy-LLM-0727.pdf          # 大文档 (20MB)
@@ -62,8 +72,8 @@ ai_assistant/
 │           ├── composables/
 │           │   └── useStreamChat.ts  # 流式聊天 Hook
 │           └── components/          # ChatView / TokenBar / Sidebar ...
-├── _chat_history.json              # 对话历史持久化
-└── _faiss_cache/                   # FAISS 索引缓存
+├── _chat_history.json              # 对话历史持久化（gitignore）
+└── _faiss_cache/                   # FAISS 索引缓存（gitignore）
 ```
 
 ---
@@ -135,39 +145,30 @@ ai_assistant/
 
 ### LangChain 链式调用拆解
 
-`A_Assistant_langchain.py` 中 RAG 链的核心构建（`_build_rag_chain`）：
+`chains.py` 中 `build_rag_messages()` 统一 `ask()` 和 `ask_stream()` 的消息构建：
 
 ```python
-# 1. 定义 Prompt 模板
-prompt = ChatPromptTemplate.from_messages([
-    ("system", "你是一个专业的学习助手...\n参考文档内容：\n{context}"),
-    ("human", "{question}")
-])
+# 1. 检索 Top-5 文档块 + 拼接上下文
+docs = vectorstore.similarity_search(question, k=5)
+context = "\n\n---\n\n".join([doc.page_content for doc in docs])
 
-# 2. 检索函数（从 FAISS 取 Top-5 文档块，拼接为上下文）
-def retrieve_and_format(inputs):
-    docs = vectorstore.similarity_search(inputs["question"], k=5)
-    context = "\n\n".join([doc.page_content for doc in docs])
-    return {"context": context, "question": inputs["question"]}
+# 2. 填充 System Prompt（带/不带历史上下文）
+system_content = SYSTEM_PROMPT_TEMPLATE.format(context=context)
 
-# 3. LangChain 链式组合（LCEL 管道语法）
-chain = (
-    retrieve_and_format     # RunnableLambda: 输入 → {context, question}
-    | prompt                # 填充模板 → [SystemMessage, HumanMessage]
-    | llm                   # ChatOpenAI.invoke() → AIMessage
-    | extract_answer_and_usage  # 提取 content + usage_metadata
-)
-
-# 4. 调用
-answer, usage = chain.invoke({"question": "有哪些矿山类型？"})
+# 3. 构建消息列表 → LLM.invoke() / LLM.stream()
+messages = [
+    {"role": "system", "content": system_content},
+    {"role": "user", "content": question}
+]
 ```
 
 ---
 
 ## LangChain vs HelloAgents 对照
 
-> 项目同时提供两个版本的 `PDFLearningAssistant`，通过 `USE_LANGCHAIN` 开关切换，
-> 所有公共方法签名一致（`load_document` / `ask` / `recall` / `add_note` / `get_stats` / `generate_report`）。
+> 项目同时提供两个版本的 `PDFLearningAssistant`，所有公共方法签名一致
+> （`load_document` / `ask` / `chat` / `chat_stream` / `clear_context` / `recall` / `add_note` / `get_stats` / `generate_report`）。
+> LangChain 版额外支持多轮上下文对话。
 
 | 功能 | HelloAgents 版 | LangChain 版 |
 |------|------|------|
@@ -176,9 +177,11 @@ answer, usage = chain.invoke({"question": "有哪些矿山类型？"})
 | **PDF 解析** | `RAGTool.run(action="add_document")` | `PyPDFLoader(path).load()` |
 | **文档切割** | `RAGTool` 内置 | `RecursiveCharacterTextSplitter` |
 | **向量存储** | `Qdrant`（外部云服务） | `FAISS`（纯内存 + 磁盘缓存） |
-| **Embedding** | `RAGTool` 内置 DASHSCOPE | `DashScopeEmbeddings`（自定义适配器） |
-| **RAG 检索** | `RAGTool.run(action="ask")` 一行 | 手动构建链：检索 → Prompt → LLM |
-| **记忆搜索** | `MemoryTool.run(action="search")` | `SimpleMemory.search()` 自实现嵌入相似度 |
+| **Embedding** | `RAGTool` 内置 DASHSCOPE | `DashScopeEmbeddings`（自定义适配器，`tools/embeddings.py`） |
+| **RAG 检索** | `RAGTool.run(action="ask")` 一行 | 手动构建链（`chains.py`）：检索 → Prompt → LLM |
+| **记忆搜索** | `MemoryTool.run(action="search")` | `SimpleMemory.search()` 自实现嵌入相似度（`tools/memory.py`） |
+| **配置管理** | 硬编码 / 环境变量散落 | `config.py` 统一管理 + `constants.py` 枚举 |
+| **上下文对话** | — | `chat()` / `chat_stream()` / `clear_context()` |
 | **API 风格** | 统一 `tool.run({action, ...})` | LangChain 链式调用 `\|` |
 
 ```
@@ -243,24 +246,51 @@ def get_assistant():
 
 ---
 
-## 其他功能（笔记 / 统计 / 报告）
+## 其他功能（笔记 / 统计 / 报告 / 上下文对话）
 
 | 功能 | 调用方法 | 说明 |
 |------|---------|------|
 | 添加笔记 | `assistant.add_note(content, concept)` | 存入 episodic 记忆，importance=0.8 |
-| 学习统计 | `assistant.get_stats()` | 会话时长 / 文档数 / 提问数 / Token 用量 |
+| 学习统计 | `assistant.get_stats()` | 会话时长 / 文档数 / 提问数 / Token 用量 / 对话轮数 |
 | 生成报告 | `assistant.generate_report()` | 记忆摘要 + RAG 状态，可选存 JSON |
+| 上下文对话 | `assistant.chat(message)` | 多轮对话，自动感知历史 |
+| 流式上下文 | `assistant.chat_stream(message)` | 流式多轮对话 |
+| 清空上下文 | `assistant.clear_context()` | 重置对话历史，开始新话题 |
+| 对话历史 | `assistant.get_conversation_history()` | 获取当前会话完整历史 |
 
 ---
 
 ## 关键设计
 
-**USE_LANGCHAIN 开关**：`ui/gradio_ui.py` 和 `ui/vue_api.py` 第 25 行各有一个，一行切换底层实现。
+**模块职责划分**：
+
+```
+A_Assistant_langchain.py  →  流程编排（文档加载、问答、上下文、记忆）
+├── config.py              →  环境变量 & 参数
+├── constants.py           →  枚举常量（MemoryType / EventType / Role）
+├── chains.py              →  RAG 消息构建 + 检索
+├── reports.py             →  统计 & 报告数据装配
+└── tools/
+    ├── embeddings.py      →  DashScope 嵌入适配器
+    ├── memory.py          →  记忆系统
+    └── utils.py           →  纯函数工具
+```
+
+**配置与常量分离**：
 
 ```python
-USE_LANGCHAIN = True   # LangChain 版
-USE_LANGCHAIN = False  # HelloAgents 版
+# config.py — LLM / Embedding / 文档处理 / 上下文参数
+from ai_assistant import config
+print(config.LLM_MODEL_ID)          # "qwen-max"
+print(config.MAX_CONVERSATION_TURNS)  # 10
+
+# constants.py — 枚举，避免魔术字符串
+from ai_assistant import constants as const
+a.memory.add(..., memory_type=const.MemoryType.EPISODIC)
+a.memory.add(..., event_type=const.EventType.DOCUMENT_LOADED)
 ```
+
+**ask / ask_stream 共用消息构建**：两者均调用 `chains.build_rag_messages()`，确保上下文行为一致，消除历史遗留的异步路径不一致 bug。
 
 **FAISS 缓存**：首次加载 PDF → 嵌入 + 保存索引到 `_faiss_cache/` → 二次加载直接读磁盘（1-2 秒），不再消耗 Embedding token。
 

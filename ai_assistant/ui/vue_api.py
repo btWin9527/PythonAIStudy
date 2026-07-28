@@ -282,10 +282,12 @@ def _save_history(history: list):
 
 
 def _get_token_info(assistant) -> dict:
+    """获取 Token 用量信息"""
+    import config
     usage = assistant.token_usage
-    ctx = assistant.context_window
+    ctx = config.LLM_CONTEXT_WINDOW
     return {
-        "model": assistant.model_name,
+        "model": config.LLM_MODEL_ID,
         "prompt_tokens": usage["prompt_tokens"],
         "completion_tokens": usage["completion_tokens"],
         "total_tokens": usage["total_tokens"],

@@ -221,8 +221,9 @@ def create_gradio_ui(AssistantClass=None):
         if assistant_state["assistant"] is None:
             return "⏳ 助手初始化中..."
         usage = assistant_state["assistant"].token_usage
-        ctx = assistant_state["assistant"].context_window
-        model = assistant_state["assistant"].model_name
+        import config
+        ctx = config.LLM_CONTEXT_WINDOW
+        model = config.LLM_MODEL_ID
         remaining = max(0, ctx - usage["total_tokens"])
         return (
             f"📊 **Token 用量** | 模型 **{model}** | "

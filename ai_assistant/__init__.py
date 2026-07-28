@@ -6,8 +6,14 @@
 模块结构：
 ├── __init__.py                   # 包入口（本文件）
 ├── .env                          # 环境变量配置（LLM API密钥、数据库等）
+├── config.py                     # 统一配置文件
+├── constants.py                  # 枚举常量定义
+├── chains.py                     # RAG 链构建模块
 ├── A_Assistant.py                # HelloAgents 版本的 PDFLearningAssistant
 ├── A_Assistant_langchain.py      # LangChain 版本的 PDFLearningAssistant
+├── tools/                        # 数据处理工具模块
+│   ├── embeddings.py             # DashScopeEmbeddings 适配器
+│   └── memory.py                 # SimpleMemory 记忆系统
 ├── pdf/
 │   └── Happy-LLM-0727.pdf       # 默认文档（未上传时自动加载）
 └── ui/
@@ -27,6 +33,7 @@
 
     # 方式3: 切换 LangChain 版本
     from ai_assistant.A_Assistant_langchain import PDFLearningAssistant
+    from ai_assistant import constants as const
 """
 
 from .A_Assistant import PDFLearningAssistant as HelloAgentsAssistant
