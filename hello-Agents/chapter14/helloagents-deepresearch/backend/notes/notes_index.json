@@ -1,0 +1,438 @@
+{
+  "notes": [
+    {
+      "id": "note_20260903_172348_0",
+      "title": "研究报告：What is 1+1?",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T17:23:48.618087"
+    },
+    {
+      "id": "note_20260903_172831_1",
+      "title": "研究报告：What is 1+1?",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T17:28:31.426627"
+    },
+    {
+      "id": "note_20260903_173247_2",
+      "title": "任务 1: 背景梳理",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T17:32:47.915276"
+    },
+    {
+      "id": "note_20260903_173247_3",
+      "title": "任务 2: 应用场景分析",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T17:32:47.917510"
+    },
+    {
+      "id": "note_20260903_173247_4",
+      "title": "任务 3: 技术挑战与限制",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T17:32:47.918583"
+    },
+    {
+      "id": "note_20260903_173247_5",
+      "title": "任务 4: 未来趋势预测",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_4"
+      ],
+      "created_at": "2026-09-03T17:32:47.919485"
+    },
+    {
+      "id": "note_20260903_173322_6",
+      "title": "研究报告：量子计算的主要应用场景",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T17:33:22.994928"
+    },
+    {
+      "id": "note_20260903_181401_7",
+      "title": "任务 1: AI在研发中的应用现状",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:14:01.158390"
+    },
+    {
+      "id": "note_20260903_181401_8",
+      "title": "任务 2: AI对研发效率的影响",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:14:01.224692"
+    },
+    {
+      "id": "note_20260903_181401_9",
+      "title": "任务 3: AI带来的研发挑战与机遇",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:14:01.225879"
+    },
+    {
+      "id": "note_20260903_181454_10",
+      "title": "研究报告：当前AI对研发的影响",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T18:14:54.728687"
+    },
+    {
+      "id": "note_20260903_181850_11",
+      "title": "任务 1: AI技术现状分析",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:18:50.255647"
+    },
+    {
+      "id": "note_20260903_181850_12",
+      "title": "任务 2: AI在研发中的角色",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:18:50.257173"
+    },
+    {
+      "id": "note_20260903_181850_13",
+      "title": "任务 3: 挑战与机遇评估",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:18:50.257925"
+    },
+    {
+      "id": "note_20260903_181923_14",
+      "title": "研究报告：当前AI对研发的影响",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T18:19:23.265435"
+    },
+    {
+      "id": "note_20260903_182011_15",
+      "title": "任务 1: AI技术现状分析",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:20:11.334088"
+    },
+    {
+      "id": "note_20260903_182011_16",
+      "title": "任务 2: AI在研发中的角色",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:20:11.336339"
+    },
+    {
+      "id": "note_20260903_182011_17",
+      "title": "任务 3: 企业采纳情况调研",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:20:11.337734"
+    },
+    {
+      "id": "note_20260903_182050_18",
+      "title": "研究报告：当前AI对研发的影响",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T18:20:50.461048"
+    },
+    {
+      "id": "note_20260903_182217_19",
+      "title": "任务 1: AI技术现状综述",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:22:17.027839"
+    },
+    {
+      "id": "note_20260903_182217_20",
+      "title": "任务 2: AI在研发中的角色",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:22:17.030395"
+    },
+    {
+      "id": "note_20260903_182217_21",
+      "title": "任务 3: AI带来的挑战与机遇",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:22:17.031907"
+    },
+    {
+      "id": "note_20260903_182244_22",
+      "title": "研究报告：当前AI对研发的影响",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T18:22:44.304099"
+    },
+    {
+      "id": "note_20260903_182344_23",
+      "title": "任务 1: AI技术现状分析",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:23:44.111992"
+    },
+    {
+      "id": "note_20260903_182344_24",
+      "title": "任务 2: AI对研发流程的影响",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:23:44.114631"
+    },
+    {
+      "id": "note_20260903_182344_25",
+      "title": "任务 3: AI伦理与安全考量",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:23:44.116049"
+    },
+    {
+      "id": "note_20260903_182506_26",
+      "title": "任务 1: AI在研发中的应用案例",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:25:06.669608"
+    },
+    {
+      "id": "note_20260903_182506_27",
+      "title": "任务 2: AI对研发效率的影响评估",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:25:06.672284"
+    },
+    {
+      "id": "note_20260903_182506_28",
+      "title": "任务 3: AI驱动的研发新趋势",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:25:06.673880"
+    },
+    {
+      "id": "note_20260903_182506_29",
+      "title": "任务 4: 挑战与风险：AI整合于研发",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_4"
+      ],
+      "created_at": "2026-09-03T18:25:06.675369"
+    },
+    {
+      "id": "note_20260903_182525_30",
+      "title": "研究报告：当前AI对研发的影响",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T18:25:25.688753"
+    },
+    {
+      "id": "note_20260903_182553_31",
+      "title": "任务 1: AI技术现状梳理",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:25:53.455407"
+    },
+    {
+      "id": "note_20260903_182553_32",
+      "title": "任务 2: AI在研发中的角色",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:25:53.458041"
+    },
+    {
+      "id": "note_20260903_182553_33",
+      "title": "任务 3: 行业专家观点汇编",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:25:53.459728"
+    },
+    {
+      "id": "note_20260903_182652_34",
+      "title": "任务 1: AI技术趋势分析",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:26:52.248358"
+    },
+    {
+      "id": "note_20260903_182652_35",
+      "title": "任务 2: 案例研究收集",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:26:52.251556"
+    },
+    {
+      "id": "note_20260903_182652_36",
+      "title": "任务 3: 专家观点汇总",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:26:52.253293"
+    },
+    {
+      "id": "note_20260903_182652_37",
+      "title": "任务 4: 挑战与机遇评估",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_4"
+      ],
+      "created_at": "2026-09-03T18:26:52.254884"
+    },
+    {
+      "id": "note_20260903_183049_38",
+      "title": "研究报告：当前AI对研发的影响",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T18:30:49.459117"
+    },
+    {
+      "id": "note_20260903_183236_39",
+      "title": "任务 1: AI在研发中的应用案例",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_1"
+      ],
+      "created_at": "2026-09-03T18:32:36.264223"
+    },
+    {
+      "id": "note_20260903_183236_40",
+      "title": "任务 2: AI提升研发效率的机制",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_2"
+      ],
+      "created_at": "2026-09-03T18:32:36.266485"
+    },
+    {
+      "id": "note_20260903_183236_41",
+      "title": "任务 3: AI对研发团队结构的影响",
+      "type": "task_state",
+      "tags": [
+        "deep_research",
+        "task_3"
+      ],
+      "created_at": "2026-09-03T18:32:36.267646"
+    },
+    {
+      "id": "note_20260903_183409_42",
+      "title": "研究报告：AI对研发的影响",
+      "type": "conclusion",
+      "tags": [
+        "deep_research",
+        "report"
+      ],
+      "created_at": "2026-09-03T18:34:09.858252"
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-09-03T17:20:01.935263",
+    "total_notes": 43
+  }
+}
