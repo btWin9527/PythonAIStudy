@@ -57,7 +57,7 @@ def setup_langsmith(enable: bool = True):
     """
     if enable:
         os.environ["LANGCHAIN_TRACING_V2"] = "true"
-        os.environ["LANGCHAIN_API_KEY"] = "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"
+        os.environ["LANGCHAIN_API_KEY"] = "输出你的LangSmith_api_key"
     else:
         os.environ.pop("LANGCHAIN_TRACING_V2", None)
         os.environ.pop("LANGCHAIN_API_KEY", None)
@@ -103,12 +103,12 @@ API_TYPE = "oneapi"  # 可选值：openai（GPT模型）| oneapi（通义千问�
 
 # OpenAI 官方 API 配置（当 API_TYPE = "openai" 时使用）
 OPENAI_API_BASE = "https://api.wlai.vip/v1"
-OPENAI_CHAT_API_KEY = "sk-EhxvNWXkjzZJADfHA1Ac24Dd0f0b42B2B97f3725D3BcA378"
+OPENAI_CHAT_API_KEY = "输出你的OpenAI_api_key"
 OPENAI_CHAT_MODEL = "gpt-4o-mini"
 
 # OneAPI 配置（当 API_TYPE = "oneapi" 时使用，以通义千问为例）
 ONEAPI_API_BASE = "http://localhost:3000/v1"
-ONEAPI_CHAT_API_KEY = "sk-xwu3pd0iSis9gpUX33F178F8D4824fFaA1D55f8e65Dc2dC1"
+ONEAPI_CHAT_API_KEY = "输出你的OneAPI_api_key"
 ONEAPI_CHAT_MODEL = "qwen-max"
 
 

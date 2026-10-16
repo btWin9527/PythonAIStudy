@@ -268,15 +268,15 @@ def build_agent(
 def main():
     # ---------- 8.1 配置（复用 FirstAgentTest.py 中的凭证 + MCP Token）----------
     if not os.environ.get("OPENAI_API_KEY"):
-        os.environ["OPENAI_API_KEY"] = "sk-f92f3376b228495ead811aa7f2e33021"
+        os.environ["OPENAI_API_KEY"] = "输出你的DashScope_api_key"
     if not os.environ.get("OPENAI_BASE_URL"):
         os.environ["OPENAI_BASE_URL"] = "https://dashscope.aliyuncs.com/compatible-mode/v1"
     if not os.environ.get("MODEL_ID"):
         os.environ["MODEL_ID"] = "qwen-max"
     if not os.environ.get("TAVILY_API_KEY"):
-        os.environ["TAVILY_API_KEY"] = "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"
+        os.environ["TAVILY_API_KEY"] = "输出你的Tavily_api_key"
     if not os.environ.get("APIPOST_MCP_TOKEN"):
-        os.environ["APIPOST_MCP_TOKEN"] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5MzI5MjIsImlzcyI6ImFwaXBvc3QiLCJleHAiOjE3Nzk0NDExODZ9.UdYPCRltVMJfoJPpUrOa7p8oWjc-VWeyVMUdWZTQ5iM"
+        os.environ["APIPOST_MCP_TOKEN"] = "输出你的Apipost_MCP_token"
 
     # ---------- 8.2 创建 LLM ----------
     llm = create_model()

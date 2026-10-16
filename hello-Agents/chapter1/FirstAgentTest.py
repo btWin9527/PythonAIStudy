@@ -137,10 +137,10 @@ import re
 
 # --- 1. 配置LLM客户端 ---
 # 请根据您使用的服务，将这里替换成对应的凭证和地址
-API_KEY = "sk-f92f3376b228495ead811aa7f2e33021"
+API_KEY = "输出你的DashScope_api_key"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL_ID = "qwen-max"
-os.environ['TAVILY_API_KEY'] = "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"
+os.environ['TAVILY_API_KEY'] = "输出你的Tavily_api_key"
 
 llm = OpenAICompatibleClient(
     model=MODEL_ID,
